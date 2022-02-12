@@ -5,7 +5,7 @@ if(indexedDB != undefined) {
     DBRequest.onupgradeneeded = function(e) {
         let result = DBRequest.result;
         if( !result.objectStoreNames.contains('quotes') ) {
-            result.createObjectStore('quotes', {keyPath: 'id', authIncrement: true});
+            result.createObjectStore('quotes', {keyPath: 'id', autoIncrement: true});
         }
     }
 

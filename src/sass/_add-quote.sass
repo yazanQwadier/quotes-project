@@ -1,0 +1,72 @@
+
+.add-quote-layout
+    width: 45%
+    margin: 10px auto
+    text-align: center
+    padding: 19px
+    background: white
+    position: absolute
+    top: 23%
+    left: 28%
+    z-index: 13
+    box-shadow: 1px 1px 6px #d5d5d5dd
+    border-radius: 30px
+    display: none
+
+    #book_name, #quote
+        width: 80%
+        padding: 8px
+        border: 1px solid #f9f9f9
+        border-radius: 6px
+        outline: none
+        margin: 10px auto
+        font-size: 17px
+
+        &:hover
+            border: 1px solid #875a5a7a
+        &:focus
+            border: 1px solid #875A5A
+
+    .add-quote-btn
+        width: 20%
+        padding: 6px
+        background: #875a5a
+        color: white
+        border: 1px solid #875a5a
+        border-radius: 27px
+        font-size: 17px
+
+        &:hover
+            cursor: pointer
+            box-shadow: 0px 0px 4px #b9b9b9
+
+    .close-btn-layout
+        text-align: right
+
+        .close-addQuoteLayout-btn
+            background: red
+            border: 0px
+            padding: 4px
+            color: white
+            width: 24px
+            height: 24px
+            border-radius: 27%
+            &:hover 
+                cursor: pointer
+
+.toggle-addNewQuote-btn-layout
+    width: 50%
+    margin: 40px auto 10px auto
+
+    .toggle-addNewQuote-btn
+        background: transparent
+        border: 0
+        font-size: 18px
+        font-weight: 500
+        padding: 4px 11px
+        transition: 0.3s
+        border: 1px solid transparent
+
+        &:hover
+            border: 1px dashed #875a5a3b
+            cursor: pointer

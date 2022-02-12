@@ -25,22 +25,36 @@
     </nav>
 
     <body>
-        <div>
-            <!-- Add Quote Section -->
-            <div class="add-quote-layout">
-                <div>
-                    <input type="text" name="" id="" placeholder="إسم الكتاب">
-                </div>
-
-                <div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="نص الاقتباس"></textarea>
-                </div>
-
-                <button>إضافة</button>
-            </div>
-            <!-- End Quote Section -->
-
+        <div class="toggle-addNewQuote-btn-layout">
+            <button class="toggle-addNewQuote-btn">
+                إضافة اقتباس جديد <i class="fa-solid fa-plus"></i>
+            </button>
         </div>
+
+        <!-- Quotes List Section -->
+        <div class="quotes-layout">
+            <div class="quotes-list"></div>
+        </div>
+        <!-- End Quotes List Section -->
+
+
+        <!-- Add Quote Section -->
+        <div class="add-quote-layout">
+            <div class="close-btn-layout">
+                <button class="close-addQuoteLayout-btn">x</button>
+            </div>
+
+            <div>
+                <input type="text" name="book_name" id="book_name" placeholder="إسم الكتاب">
+            </div>
+
+            <div>
+                <textarea name="quote" id="quote" cols="30" rows="5" placeholder="نص الاقتباس"></textarea>
+            </div>
+
+            <button type="button" class="add-quote-btn">إضافة</button>
+        </div>
+        <!-- End Quote Section -->
     </body>
 
     <footer>

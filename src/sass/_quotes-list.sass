@@ -1,0 +1,65 @@
+.quotes-layout
+    position: relative
+    width: 50%
+    margin: 5px auto
+
+    .quote-item
+        position: relative
+        margin: 15px 4px
+        padding: 15px
+        border: 1px solid #f7f7f78c
+        border-radius: 30px
+        box-shadow: 0px 0px 5px #f7f7f7
+        transition: 0.2s
+
+        &::before
+            content: ""
+            position: absolute
+            top: 35%
+            right: -24px
+            width: 20px
+            height: 20px
+            background: radial-gradient(#383838, #a7a7a7)
+            border-radius: 50%
+            z-index: 5
+            box-shadow: 0px 0px 3px #959595
+            transition: 0.2s
+
+        &:not(:first-of-type)::after
+            content: ""
+            position: absolute
+            top: -85%
+            right: -15px
+            height: 125%
+            width: 2px
+            background: #efefef
+            z-index: 2
+
+        &:hover
+            animation: activeQuote 1s 0s infinite ease-in-out
+            animation-direction: alternate-reverse
+            cursor: pointer
+
+            &::before
+                background: radial-gradient(#aa2222, #a7a7a7)
+                animation: activeQuotePoint 1s 0s infinite ease-in-out
+                animation-direction: alternate-reverse
+
+
+        .book_name
+            margin-right: 5px
+            color: #8d8d8d
+
+
+@keyframes activeQuote 
+    from
+        box-shadow: 0px 0px 10px #e5e5e5
+    to
+        box-shadow: 0px 0px 5px #f7f7f7
+
+@keyframes activeQuotePoint
+    from
+        box-shadow: 0px 0px 5px #404040
+    to
+        box-shadow: 0px 0px 3px #959595
+
