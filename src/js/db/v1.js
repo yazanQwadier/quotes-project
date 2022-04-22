@@ -2,7 +2,7 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 let db;
 if(indexedDB != undefined) {
     let DBRequest = indexedDB.open('quotesDB', 1);
-    DBRequest.onupgradeneeded = function(e) {
+    DBRequest.onupgradeneeded = function() {
         let result = DBRequest.result;
         if( !result.objectStoreNames.contains('quotes') ) {
             result.createObjectStore('quotes', {keyPath: 'id', autoIncrement: true});

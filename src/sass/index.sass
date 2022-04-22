@@ -24,3 +24,36 @@ $navbarColor: #875A5A
             a
                 text-decoration: none
                 color: white
+
+.editable-quote-item
+    display: flex
+    align-items: center
+    display: none
+
+    .quote-content, .quote-book-name
+        border: 1px solid #e9e9e9
+        width: 40%
+        padding: 4px
+        border-radius: 5px
+        font-size: 16px
+        margin: 2px
+
+        &:focus
+            outline: 0px
+            border: 1px solid #a5a5a5
+
+    .quote-book-name
+        width: 30%
+
+    .edit-btn, .delete-btn
+        background: #3e3cbd
+        color: white
+        padding: 9px
+        border: 0px
+        border-radius: 5px
+        font-size: 14px
+        margin: 2px
+
+    .delete-btn
+        background: #bd3c3c
+    
