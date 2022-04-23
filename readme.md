@@ -1,4 +1,5 @@
 - [x] let title field suggesting by google api
-- [ ] avaliable to add quotes by audio recording
+- [x] avaliable to add quotes by audio recording
+- [ ] save static files at first visit, for run when state is offline 
 - [ ] type unit testing by jest
 - [ ] enhancement of design and let it responsive

@@ -8,7 +8,7 @@ import "./general/master";
 import '/node_modules/@fortawesome/fontawesome-free/js/all.min.js';
 
 db.onsuccess = async function() {
-    let quotes = await getQuotes(db.result);
+    let quotes = await getQuotes.getAll(db.result);
     previewQuotes(quotes);
 
     // add new quote
@@ -16,15 +16,19 @@ db.onsuccess = async function() {
     if(addBtn != undefined) {
         addBtn.addEventListener('click', async function(e){
             let book_name = document.getElementById('book_name').value;
-            let quote_text = document.getElementById('quote').value;
-            if(book_name && quote_text) {
-                let added = addQuote(db.result, book_name, quote_text);
+            let quote_type = document.querySelector('[name="quote_type"]:checked').value;
+            let quote_text = document.getElementById('quote_text').value;
+            let base64_audio = sessionStorage.getItem('temp_audio_as_base64');
 
-                let quotes = await getQuotes(db.result);
+            if(book_name && quote_type && (quote_text || base64_audio)) {
+                let added = addQuote(db.result, book_name, quote_type, quote_text, base64_audio);
+                let quotes = await getQuotes.getAll(db.result);
                 previewQuotes(quotes);
                 document.getElementsByClassName('add-quote-layout')[0].style.display = "none";
                 document.getElementById('book_name').value = null;
-                document.getElementById('quote').value = null;
+                document.getElementById('quote_text').value = null;
+                document.getElementById('text_quote_type').setAttribute('checked', 'checked');
+                sessionStorage.removeItem('temp_audio_as_base64');
             }
             else {
                 alert('يجب إدخال بيانات الاقتباس !');
@@ -40,16 +44,28 @@ function previewQuotes(quotes){
         quotes.map((quote) => {
             list+= `
                 <div class="quote-item">
-                    <p>
-                        <i class="fa-solid fa-quote-right" style="color: #8b8b8b"></i>
-                        ${quote.quote} 
-                        <i class="fa-solid fa-quote-left"  style="color: #8b8b8b"></i>
-                    </p>
+                    ${
+                        (quote.quote_type == 'text')?
+                        `<p>
+                            <i class="fa-solid fa-quote-right" style="color: #8b8b8b"></i>
+                            ${quote.quote_text} 
+                            <i class="fa-solid fa-quote-left"  style="color: #8b8b8b"></i>
+                        </p>` :
+                        `<audio class="audio_quote" controls>
+                                <source src="${quote.base64_audio}" >
+                                Your browser does not support the audio tag.
+                        </audio>`
+                    }
+               
                     <p class="book_name">${quote.book_name}</p>
 
                     <div class="editable-quote-item">
-                        <input type="text" placeholder="إسم الكتاب" class="quote-book-name" value="${quote.book_name}" required>
-                        <textarea placeholder="نص الاقتباس" rows="1" class="quote-content" required>${quote.quote}</textarea>
+                        <input type="text" placeholder="إسم الكتاب" class="edit-book-name" value="${quote.book_name}" required>
+                        ${
+                            (quote.quote_type == "text")?
+                                `<textarea placeholder="نص الاقتباس" rows="1" class="edit-quote-text" required>${quote.quote_text}</textarea>`
+                                : ''
+                        }
 
                         <button class="edit-btn" title="تعديل" data-quoteId="${quote.id}"><i class="fas fa-edit"></i></button>
                         <button class="delete-btn" title="حذف" data-quoteId="${quote.id}"><i class="fas fa-eraser"></i></button>
@@ -63,6 +79,7 @@ function previewQuotes(quotes){
     }
 
     document.querySelector('.quotes-list').innerHTML = list;
+
 
     let quoteItems = document.getElementsByClassName('quote-item');
     if(quoteItems.length > 0) {
@@ -78,17 +95,19 @@ function registerEventHandlerForQuote(quoteItem) {
     });
 
 
-    // edit quote content
+    // edit quote item
     let editBtn = quoteItem.getElementsByClassName('edit-btn')[0];
     if(editBtn != undefined) {
         editBtn.addEventListener('click', async function(e){
             let form = editBtn.parentElement;
+            let quote_type = (form.querySelector('.edit-quote-text'))? 'text' : 'audio';
             let id = parseInt(editBtn.getAttribute('data-quoteId'));
-            let book_name = form.getElementsByClassName('quote-book-name')[0].value;
-            let quote_text = form.getElementsByClassName('quote-content')[0].value;
-            if(book_name && quote_text) {
-                editQuote(db.result, id, book_name, quote_text);
-                let quotes = await getQuotes(db.result);
+            let book_name = form.getElementsByClassName('edit-book-name')[0].value;
+            let quote_text = ( quote_type == 'text' )? form.querySelector('.edit-quote-text').value : null;
+
+            if(book_name || (book_name && (quote_type == 'text' && quote_text)) ) {
+               await editQuote(db.result, id, book_name, quote_text);
+                let quotes = await getQuotes.getAll(db.result);
                 previewQuotes(quotes);
                 form.style.display = "none";
             }
@@ -106,7 +125,7 @@ function registerEventHandlerForQuote(quoteItem) {
             let is_confirmed = confirm('هل انت متأكد من حذف الاقتباس ؟');
             if( is_confirmed ) {
                 deleteQuote(db.result, id);
-                let quotes = await getQuotes(db.result);
+                let quotes = await getQuotes.getAll(db.result);
                 previewQuotes(quotes);
             }
         });

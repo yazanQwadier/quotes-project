@@ -1,7 +1,9 @@
-module.exports = (db, book_name, quote_text) => {
+module.exports = (db, book_name, quote_type, quote_text, base64_audio) => {
     let new_quote = {
-        book_name:book_name,
-        quote:quote_text,
+        book_name: book_name,
+        quote_type: quote_type,
+        quote_text: quote_text,
+        base64_audio: base64_audio
     };
 
     let transaction = db.transaction('quotes', 'readwrite');

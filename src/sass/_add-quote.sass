@@ -13,7 +13,7 @@
     border-radius: 30px
     display: none
 
-    #book_name, #quote
+    #book_name, #quote_text
         width: 80%
         padding: 8px
         border: 1px solid #f9f9f9
@@ -40,6 +40,80 @@
             background: #fdfdfd
             cursor: pointer
 
+    .quote_types_layout
+        display: flex
+        justify-content: center
+        margin: 10px 0px
+
+        #audio_quote_type,
+        #text_quote_type
+            display: none
+
+        .quote_type_item
+            padding: 5px 30px
+
+            &:hover,
+            label
+                cursor: pointer
+
+        .active_quote_type_item
+            background: #f7f7f7
+
+    #quote_audio_layout
+        display: none
+        margin: 15px 0px
+            
+    .audio-btns-layout
+        display: flex
+        justify-content: center
+
+    .audio-btn
+        background: #f9f9f9
+        border: 1px solid #dfdfdf
+        cursor: pointer
+        margin: 0px 3px
+
+        &:hover
+            background: #ededed
+
+    #record-audio-btn,
+    #resume-audio-btn,
+    #delete-audio-btn
+        color: #ed1515
+        padding: 5px
+        font-size: 12px
+        border-radius: 18px
+
+    #stop-audio-btn
+        color: #767676
+        padding: 4px
+        border-radius: 3px
+        display: none
+
+    #pause-audio-btn
+        color: #31a700
+        padding: 4px
+        border-radius: 3px
+        display: none
+
+    #resume-audio-btn,
+    #delete-audio-btn
+        display: none
+
+    #audio-recording-timer
+        display: flex
+        justify-content: center
+        align-items: center
+        
+        #seconds_timer
+            font-size: 15px
+            color: #727272
+
+        .sound_waves 
+            width: 50px
+            margin: 0px 5px
+            display: none
+            
 
     .add-quote-btn
         width: 20%
