@@ -1,11 +1,13 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/js/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'index.bundle.js'
+        filename: 'index.bundle.js',
+
+        publicPath: '/quotes-project/',
     },
     module: {
         rules: [
