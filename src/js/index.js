@@ -131,3 +131,17 @@ function registerEventHandlerForQuote(quoteItem) {
         });
     }
 }
+
+
+// register service worker
+if( "serviceWorker" in navigator ) {
+    window.addEventListener('load', function(){
+        navigator.serviceWorker.register('/src/js/general/sw_cached_pages.js')
+        .then(res => {
+            console.info('service worker: Registered');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    });
+}
