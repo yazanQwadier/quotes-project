@@ -21,19 +21,6 @@ module.exports = {
                 }
             ]
         },
-        {
-            test: /\.(png|jpe?g|gif|js)$/i,
-            loader: 'file-loader',
-            options: {
-            publicPath: (process.env.NODE_ENV === 'development')? '' : '/quotes-project/',
-
-              name(resourcePath, resourceQuery) {
-                // `resourcePath` - `/absolute/path/to/file.js`
-                // `resourceQuery` - `?foo=bar`
-                return '[path][name].[ext]';
-              },
-            },
-          },
         ]
     }
 };

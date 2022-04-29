@@ -1,9 +1,9 @@
 const cacheName = "v1";
 
 const cacheAssets = [
-    '/dist/index.bundle.js',
-    '/index.html',
-    '/assets/waves.gif',
+    '/quotes-project/dist/index.bundle.js',
+    '/quotes-project/index.html',
+    '/quotes-project/assets/waves.gif',
 ];
 
 self.addEventListener('install', function(e){
