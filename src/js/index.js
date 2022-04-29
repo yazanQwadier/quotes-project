@@ -6,7 +6,6 @@ import deleteQuote from './quotes/delete';
 import getQuotes from './quotes/get';
 import "./general/master";
 import '/node_modules/@fortawesome/fontawesome-free/js/all.min.js';
-const path = require('path');
 
 db.onsuccess = async function() {
     let quotes = await getQuotes.getAll(db.result);
@@ -137,7 +136,7 @@ function registerEventHandlerForQuote(quoteItem) {
 // register service worker
 if( "serviceWorker" in navigator ) {
     window.addEventListener('load', function(){
-        navigator.serviceWorker.register( path.resolve('../../src/js/general/', 'sw_cached_pages.js') )
+        navigator.serviceWorker.register('../../src/js/general/sw_cached_pages.js')
             .then(res => {
                 console.info('service worker: Registered');
             })
