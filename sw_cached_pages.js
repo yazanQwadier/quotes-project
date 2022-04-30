@@ -44,7 +44,7 @@ self.addEventListener('fetch', function(e) {
     console.log('service worker: fetch');
 
     e.respondWith(async function() {
-        console.log("link is " + e.request);
+        console.log(e.request);
         return fetch(e.request).catch((err) => caches.match(e.request));
       }());
 });
