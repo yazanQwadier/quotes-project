@@ -90,7 +90,7 @@ function previewQuotes(quotes){
                 <div class="${(quotes.length > 1)? 'quote-with-line' : ''}">
                     <div class="quote-item">
                         <div class="quote-item-content">
-                            <div>
+                            <div style="width: 85%;">
                                 ${
                                     (quote.quote_type == 'text')?
                                     `<p>
