@@ -5,103 +5,125 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/quotes-project/favicon.ico">
-    <title>Books Quotes</title>
+    <title>اقتباسات الكتب</title>
 </head>
 
 <body>
-    <nav>
-        <div class="navbar">
-            <ul>
-                <li>
-                    <a href="/">Brand</a>
-                </li>
-                <li>
-                    <a href="/">الرئيسية</a>
-                </li>
-                <li>
-                    <a href="#">الاحصائيات</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <a href="https://github.com/yazanqwaider/quotes-project" class="github-repo" title="Visit Github Repository" target="_blank">
+        Github Repository 
+        <i class="fab fa-github"></i>
+    </a>
 
-    <div class="toggle-addNewQuote-btn-layout">
-        <button class="toggle-addNewQuote-btn">
-            إضافة اقتباس جديد <i class="fa-solid fa-plus"></i>
-        </button>
-    </div>
+    <div class="content-wrapper">
 
-    <!-- Quotes List Section -->
-    <div class="quotes-layout">
-        <div class="quotes-list"></div>
-    </div>
-    <!-- End Quotes List Section -->
-
-
-    <!-- Add Quote Section -->
-    <div class="add-quote-layout">
-        <div class="close-btn-layout">
-            <button class="close-addQuoteLayout-btn">x</button>
-        </div>
-
-        <div>
-            <input type="text" name="book_name" id="book_name" autocomplete="off" placeholder="إسم الكتاب">
-            <div id="suggested-books-names"></div>
-        </div>
-
-        <div class="quote_types_layout">
-            <div class="quote_type_item text_quote_item active_quote_type_item">
-                <label for="text_quote_type"><i class="fas fa-align-center"></i> نصي</label>
-                <input type="radio" name="quote_type" value="text" id="text_quote_type" checked>
+        <!-- Poem Header -->
+        <div class="header-poem">
+            <div class="poem-part">
+                <p>العلم ُصَيْــدٌ والكتابة قيدُه</p>
+                <span class="poem-stars">* * *</span>
+                <p>قَـيــِّدْ صيودك بالحبال الواثقة</p>
             </div>
 
-            <div class="quote_type_item audio_quote_item">
-                <label for="audio_quote_type"><i class="fas fa-microphone"></i> صوتي</label>
-                <input type="radio" name="quote_type" value="audio" id="audio_quote_type">
+            <div class="poem-part">
+                <p>فمن الحماقة أن تصيد غزالة ً</p>
+                <span class="poem-stars">* * *</span>
+                <p>وتردها بين الخلائق طالقة</p>
             </div>
+            <p>
         </div>
 
+        <div class="toggle-addNewQuote-layout-btn">
+            <button class="toggle-addNewQuote-btn" title="إضافة">
+                إضافة اقتباس جديد <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    
+        <!-- Quotes List Section -->
+        <div class="quotes-layout">
+            <div class="quotes-list"></div>
+        </div>
+        <!-- End Quotes List Section -->
+    
+    
+        <!-- Add Quote Section -->
+        <div class="add-quote-layout">
+            <div class="close-btn-layout">
+                <button class="close-addQuoteLayout-btn" title="إغلاق">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="error-messages"></div>
+
+            <!-- Quote Book Name Input -->
+            <div>
+                <input type="text" name="book_name" id="book_name" autocomplete="off" placeholder="إسم الكتاب">
+                <div id="suggested-books-names"></div>
+            </div>
+    
+            <!-- Quote Content Type Input -->
+            <div class="quote_types_layout">
+                <label class="quote_type_item text_quote_item active_quote_type_item">
+                    <i class="fas fa-align-center"></i> نصي
+                    <input type="radio" name="quote_type" value="text" id="text_quote_type" checked>
+                </label>
         
-        <div id="quote_text_layout">
-            <textarea name="quote" id="quote_text" cols="30" rows="5" placeholder="نص الاقتباس"></textarea>
-        </div>
-
-        <div id="quote_audio_layout">
-            <div class="audio-btns-layout">
-                <button id="record-audio-btn" class="audio-btn" title="بدء التسجيل">
-                    <i class="fas fa-circle"></i>
-                </button>
-                <button id="stop-audio-btn" class="audio-btn" title="إيقاف التسجيل">
-                    <i class="fas fa-stop"></i>
-                </button>
-                <button id="pause-audio-btn" class="audio-btn" title="إيقاف التسجيل مؤقتاً">
-                    <i class="fas fa-pause"></i>
-                </button>
-                <button id="resume-audio-btn" class="audio-btn" title="استنئاف التسجيل">
-                    <i class="fas fa-circle"></i>
-                </button>
-                <button id="delete-audio-btn" class="audio-btn" title="حذف التسجيل">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
+                <label class="quote_type_item audio_quote_item">
+                    <i class="fas fa-microphone"></i> صوتي
+                    <input type="radio" name="quote_type" value="audio" id="audio_quote_type">
+                </label>
             </div>
-            <div id="audio-recording-timer" dir="ltr">
-                <p class="timer">
-                    <span id="seconds_timer">0.00</span> <small>s / 60 s</small>
-                </p>
-
-                <img src="/quotes-project/assets/waves.gif" class="sound_waves" alt="sound waves">
+    
+            <!-- Quote Text Content Input -->
+            <div id="quote_text_layout">
+                <textarea name="quote" id="quote_text" cols="30" rows="4" placeholder="نص الاقتباس"></textarea>
             </div>
+            
+            <!-- Quote Audio Content Input -->
+            <div id="quote_audio_layout">
+                <div class="audio-btns-layout">
+                    <button id="record-audio-btn" class="audio-btn" title="بدء التسجيل">
+                        <i class="fas fa-circle"></i>
+                    </button>
+                    <button id="stop-audio-btn" class="audio-btn" title="إيقاف التسجيل">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                    <button id="pause-audio-btn" class="audio-btn" title="إيقاف التسجيل مؤقتاً">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button id="resume-audio-btn" class="audio-btn" title="استنئاف التسجيل">
+                        <i class="fas fa-circle"></i>
+                    </button>
+                    <button id="delete-audio-btn" class="audio-btn" title="حذف التسجيل">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
 
-            <div id="preview_audio_layout"></div>
+                <div id="audio-recording-timer" dir="ltr">
+                    <p class="timer">
+                        <span id="seconds_timer">0.00</span> <small>s / 60 s</small>
+                    </p>
+    
+                    <img src="/assets/waves.gif" class="sound_waves" alt="sound waves">
+                </div>
+    
+                <div id="preview_audio_layout"></div>
+            </div>
+    
+            <button type="button" class="add-quote-btn">
+                إضافة <i class="fas fa-plus"></i>
+            </button>
         </div>
-
-        <button type="button" class="add-quote-btn">إضافة</button>
+        <!-- End Add Quote Section -->
     </div>
-    <!-- End Quote Section -->
+
 
     <footer>
-        <div>
-            Footer
+        <div class="footer" dir="ltr">
+            <p>
+                Developed By Yazan 
+                <span><i class="fas fa-heart"></i></span>
+            </p>
         </div>
     </footer>
 
