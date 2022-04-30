@@ -6,6 +6,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.bundle.js',
+        assetModuleFilename: 'assets/[name][ext]',
     },
     module: {
         rules: [
@@ -19,9 +20,9 @@ module.exports = {
                         warnRuleAsWarning: true,
                     },
                 }
-            ]
-        },
+            ],
+          },
         ]
-    }
+    },
 };
 

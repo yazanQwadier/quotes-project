@@ -1,12 +1,12 @@
 const cacheName = "v1";
 
 const cacheAssets = [
-    '/dist/index.bundle.js',
     '/index.html',
     '/assets/waves.gif',
     '/assets/books.png',
-    '/assets/fonts/Cairo/Cairo-Regular.ttf',
-    '/assets/fonts/Harmattan/Harmattan-Regular.ttf',
+    '/dist/index.bundle.js',
+    '/dist/assets/Cairo-Regular.ttf',
+    '/dist/assets/Harmattan-Regular.ttf',
 ];
 
 
@@ -44,7 +44,10 @@ self.addEventListener('fetch', function(e) {
     console.log('service worker: fetch');
 
     e.respondWith(async function() {
-        console.log(e.request);
-        return fetch(e.request).catch((err) => caches.match(e.request));
+        console.log(e.request.url);
+
+        let url = new URL(e.request.url);
+        url = (url.pathname == '/')? url + 'index.html' : url;
+        return fetch(e.request).catch((err) => caches.match(url));
       }());
 });
