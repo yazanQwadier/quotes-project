@@ -43,8 +43,12 @@ self.addEventListener('activate', function(e) {
 self.addEventListener('fetch', function(e) {
     console.log('service worker: fetch');
 
-    e.respondWith(
-        fetch(e.request)
-        .catch(() => caches.match(e.request))
-    )
+    e.respondWith(async function() {
+        // Try to get the response from a cache.
+        const cachedResponse = await caches.match(e.request);
+        // Return it if we found one.
+        if (cachedResponse) return cachedResponse;
+        // If we didn't find a match in the cache, use the network.
+        return fetch(e.request);
+      }());
 });
