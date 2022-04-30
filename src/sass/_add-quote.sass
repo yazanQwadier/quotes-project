@@ -3,41 +3,65 @@
     width: 45%
     margin: 10px auto
     text-align: center
-    padding: 19px
+    padding: 15px
     background: white
     position: absolute
-    top: 23%
+    top: 18%
     left: 28%
     z-index: 13
-    box-shadow: 1px 1px 6px #d5d5d5dd
-    border-radius: 30px
+    box-shadow: 1px 1px 24px #abababdd
+    border-radius: 17px
     display: none
 
     #book_name, #quote_text
         width: 80%
-        padding: 8px
-        border: 1px solid #f9f9f9
+        padding: 7px
+        border: 1px solid #ededed
         border-radius: 6px
         outline: none
         margin: 10px auto
-        font-size: 17px
+        font-size: 16px
+        box-shadow: 0px 0px 5px #f5f5f5cc
+        font-family: 'Cairo', sans-serif
+        transition: 0.3s
 
         &:hover
-            border: 1px solid #875a5a7a
+            border: 1px solid #daabab7a
         &:focus
-            border: 1px solid #875A5A
+            border: 1px dashed #8d8d8d
+    
+    .error-messages
+        color: red
+
+    .invalid-field
+        border: 1px solid red !important
         
     #suggested-books-names
         display: none
-        box-shadow: 0px 3px 9px #efefef
+        box-shadow: 2px 2px 18px #f7f7f7
         border-radius: 6px
         padding: 15px
+        width: 80%
+        margin: -5px auto
+
+    #close-suggested-btn
+        background: #565656
+        border: 0px
+        color: white
+        font-size: 14px
+        padding: 3px 12px
+
+        &:hover
+            cursor: pointer
+            background: #6d6d6d
+
 
     .suggested-book-item
         padding: 6px
         border-bottom: 1px solid whitesmoke
+        font-family: 'Cairo', sans-serif
         &:hover
-            background: #fdfdfd
+            background: #f7f7f7
             cursor: pointer
 
     .quote_types_layout
@@ -50,8 +74,8 @@
             display: none
 
         .quote_type_item
-            padding: 5px 30px
-
+            padding: 5px 0px
+            width: 120px
             &:hover,
             label
                 cursor: pointer
@@ -113,12 +137,15 @@
             width: 50px
             margin: 0px 5px
             display: none
-            
+
+    #preview_audio_layout
+        audio
+            max-width: 100%
 
     .add-quote-btn
         width: 20%
         padding: 6px
-        background: #875a5a
+        background: black
         color: white
         border: 1px solid #875a5a
         border-radius: 27px
@@ -132,29 +159,40 @@
         text-align: right
 
         .close-addQuoteLayout-btn
-            background: red
-            border: 0px
-            padding: 4px
+            background: #eb0000
+            border: 0px solid transparent
+            padding: 5px
             color: white
-            width: 24px
-            height: 24px
-            border-radius: 27%
+            width: 25px
+            height: 25px
+            border-radius: 6px
+            font-size: 16px
+            box-shadow: 1px 1px 5px #bdbdbd
             &:hover 
                 cursor: pointer
+                box-shadow: 1px 1px 7px #afafaf
 
-.toggle-addNewQuote-btn-layout
+.toggle-addNewQuote-layout-btn
     width: 50%
     margin: 40px auto 10px auto
 
     .toggle-addNewQuote-btn
         background: transparent
-        border: 0
         font-size: 18px
         font-weight: 500
-        padding: 4px 11px
+        padding: 5px 14px
         transition: 0.3s
-        border: 1px solid transparent
+        border: 1px dashed #875a5a3b
+        box-shadow: 0px 0px 4px #d9d9d9
+        transition: 0.3s
 
         &:hover
-            border: 1px dashed #875a5a3b
+            box-shadow: 0px 0px 12px #d9d9d9
             cursor: pointer
+
+@media (max-width: 768px) 
+    .add-quote-layout
+        width: 80%
+        left: 5%
+        .add-quote-btn
+            width: 50%

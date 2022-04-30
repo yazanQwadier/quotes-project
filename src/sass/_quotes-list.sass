@@ -12,6 +12,14 @@
         box-shadow: 0px 0px 5px #f7f7f7
         transition: 0.2s
 
+        .quote-item-content
+            display: flex
+            align-items: center
+            justify-content: space-between
+
+            .quote-date
+                color: #9b9b9b
+
         &::before
             content: ""
             position: absolute
@@ -25,26 +33,36 @@
             box-shadow: 0px 0px 3px #959595
             transition: 0.2s
 
-        &:not(:first-of-type)::after
-            content: ""
-            position: absolute
-            top: -85%
-            right: -15px
-            height: 125%
-            width: 2px
-            background: #efefef
-            z-index: 2
-
         &:hover
             animation: activeQuote 1s 0s infinite ease-in-out
             animation-direction: alternate-reverse
             cursor: pointer
-
             &::before
                 background: radial-gradient(#aa2222, #a7a7a7)
                 animation: activeQuotePoint 1s 0s infinite ease-in-out
                 animation-direction: alternate-reverse
 
+    
+    .quote-with-line 
+        position: relative
+        &:not(:first-of-type)::before
+            content: ""
+            position: absolute
+            top: -5%
+            right: -10px
+            height: 55%
+            width: 2px
+            background: #efefef
+            z-index: 2
+        &:not(:last-of-type)::after
+            content: ""
+            position: absolute
+            top: 50%
+            right: -10px
+            height: 65%
+            width: 2px
+            background: #efefef
+            z-index: 2
 
         .book_name
             margin-right: 5px
@@ -53,7 +71,6 @@
         .audio_quote
             width: 90%
             margin: 5px 5%
-
 
 @keyframes activeQuote 
     from
